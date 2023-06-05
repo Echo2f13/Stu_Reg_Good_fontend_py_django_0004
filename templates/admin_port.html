@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+	<link rel="stylesheet" href="{% static '/assets/css/style3.css' %}">
+	<title>AdminSite</title>
+</head>
+<body>
+	
+	<!-- SIDEBAR -->
+	<section id="sidebar">
+        <a  class="brand" href="{% url 'admin_portal_page' %}">AdminSite</a>
+		<ul class="side-menu">
+			<li><a href="#" class="active"><i class='bx bxs-dashboard icon' ></i> Dashboard</a></li>
+			<li class="divider" data-text="main">Main</li>
+			<li><a href="{% url 'student_view' %}" ><i class='bx bxs-notepad icon' ></i>Student details</a></li>
+			<li><a href="{% url 'course_view' %}"><i class='bx bx-table icon' ></i> Course details</a></li>
+		</ul><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+		<div class="ads">
+            <a href="{% url 'admin_logout' %}" class="btn-upgrade">Logout</a>
+		</div>
+	</section>
+	<!-- SIDEBAR -->
+	<!-- NAVBAR -->
+	<section id="content">
+        <center>
+            <p style="padding: 35%;">click to proceed</p>
+        </center>
+	</section>
+	<!-- NAVBAR -->
+
+	<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+	<script src="{% static '/assets/js/script3.js' }"></script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>student-profile</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" type="image/x-icon" href="{% static 'assets/img/logo/loder.png' %}  ">
+      
+        <!-- CSS here -->
+        <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/owl.carousel.min.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/slicknav.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/flaticon.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/progressbar_barfiller.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/gijgo.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/animate.min.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/animated-headline.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/magnific-popup.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/fontawesome-all.min.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/themify-icons.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/slick.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/nice-select.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/style2.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/responsive2.css' %}">
+
+        <!-- ===== ===== Remix Font Icons Cdn ===== ===== -->
+        <link rel="stylesheet" href="{% static 'assets/fonts/remixicon.css' %}">
+      </head>
+<body>
+    <!-- ===== ===== Body Main-Background ===== ===== -->
+    <span class="main_bg"></span>
+
+
+    <!-- ===== ===== Main-Container ===== ===== -->
+    <div class="container">
+    {% for x in user %}
+        {% for y in std %}
+            {% if y.user_id == x.id %}
+        
+
+
+            <!-- ===== ===== User Main-Profile ===== ===== -->
+            <section class="userProfile card">
+                <div class="profile">
+                    <figure><img  src="/media/{{ y.student_image }}" alt="student dp"  width="40px" height="40px"></figure>
+                </div>
+            </section>
+            <!-- ===== ===== Work & Skills Section ===== ===== -->
+            <section class="work_skills card">
+                <!-- ===== ===== Work Contaienr ===== ===== -->
+                <div class="work">
+                    <div class="secondary">
+                        {{ password_changed }}
+                        {% for x in user %}
+                            {% for y in std %}
+                                {% if y.user_id == x.id %}
+                                {{ message1 }}
+                                {{ message2 }}
+                                <form  action="{% url 'stu_change_pass' %}" method="post">
+                                    <div class="form-floating mb-3" hidden>
+                                        <input type="text" class="form-control" id="floatingInput" placeholder="Joe" name="student_id_pre_3" value="{{ y.stu_reg_id }}">
+                                        <label for="floatingInput">Student ID</label>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <label for="floatingInput">Current Password</label>
+                                        <input type="password" class="form-control" id="floatingInput"  name="current_password">
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <label for="floatingInput">New Password</label>
+                                        <input type="password" class="form-control" id="floatingInput" name="new_password">
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <label for="floatingInput">Type again</label>
+                                        <input type="password" class="form-control" id="floatingInput" name="new_password_2">
+                                    </div>
+                                    <div class="row" >
+    
+                                        <div class="col-sm-2" >
+                                            <button style=" color: rgb(255, 255, 255); background-color: rgb(255, 159, 83) ; border-radius: 5px; padding: 2px 10px; border: 0px;" type="submit" name="change_password" value="change_password" >change_password</button>
+                                        </div>
+                                        <div class="col-sm-7" ></div>
+                                        <div class="col-sm-3" >
+                                            <button style=" color: rgb(255, 255, 255); background-color: rgb(255, 159, 83) ; border-radius: 5px; padding: 2px 10px; border: 0px;" type="submit" name="back" value="back" >Back</button>
+                                        </div>
+                                    </div>
+                                </form>
+                                {% endif %}
+                            {% endfor %}
+                        {% endfor %}                 
+                    </div>
+                </div>
+            </section>
+           
+
+
+            
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
+    </div>
+    
+</body>
+</html>

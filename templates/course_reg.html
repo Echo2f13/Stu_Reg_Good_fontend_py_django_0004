@@ -1,0 +1,90 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>student-profile</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" type="image/x-icon" href="{% static 'assets/img/logo/loder.png' %}  ">
+      
+        <!-- CSS here -->
+        <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/owl.carousel.min.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/slicknav.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/flaticon.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/progressbar_barfiller.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/gijgo.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/animate.min.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/animated-headline.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/magnific-popup.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/fontawesome-all.min.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/themify-icons.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/slick.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/nice-select.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/style2.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/responsive2.css' %}">
+
+        <!-- ===== ===== Remix Font Icons Cdn ===== ===== -->
+        <link rel="stylesheet" href="{% static 'assets/fonts/remixicon.css' %}">
+      </head>
+<body>
+    <!-- ===== ===== Body Main-Background ===== ===== -->
+    <span class="main_bg"></span>
+    <div class="container">
+      <section class="timeline_about card">
+          <div class="tabs">
+              <ul>
+                  
+                  <li class="about active">
+                    <span>Courses</span>
+                </li>
+              </ul>
+          </div>
+
+          <div class="contact_Info">
+            <form action="{% url 'course_reg_form' %}" method="post">
+              <div class="form-floating mb-3" hidden>
+                <input type="text" class="form-control" id="floatingInput" placeholder="Joe" name="user_id" value="{{ user_id }}">
+                <label for="floatingInput">User ID</label>
+              </div>
+              <br>
+              <br><br>
+              <div class="container-fluid" >
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Course ID</th>
+                      <th scope="col">Course Name</th>
+                      <th scope="col">Description</th>
+                      <th scope="col">Select</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  {% for x in all_courses_data %}
+                      <tr>
+                          <td>{{ x.course_id }}</td>
+                          <td>{{ x.course_name }}</td>
+                          <td>{{ x.description }}</td>
+                          <td>
+                            <input class="form-check-input" type="radio" name="course_reg_radios" value="{{ x.course_id }}" checked>
+                          </td>
+                      </tr>
+                  {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+              <br><br>
+              <center>
+                <button type="submit" class="btn btn-warning" value="Register" name="Register">Register</button>
+                <button type="submit" class="btn btn-warning" value="Back" name="Back">Back</button>
+              </center>
+            </form>
+          </div>
+      </section>
+    </div>
+    
+</body>
+</html>
